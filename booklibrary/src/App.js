@@ -1,11 +1,21 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { Users } from "./users";
 import "./App.css";
-
-
+import Table from "./Table";
 
 function App() {
   const [query, setQuery] = useState("");
+  const keys = ["heading", "location", "img"];
+
+  const Search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(query))
+    );
+  };
+
+  useEffect(() => {
+  }, [query]);
+
   return (
     <div className="app">
       <input
@@ -13,15 +23,7 @@ function App() {
         placeholder="Search..."
         onChange={(e) => setQuery(e.target.value.toLowerCase())}
       />
-      <ul className="list">
-        {Users.filter((asd) =>
-          asd.heading.toLowerCase().includes(query)
-        ).map((user) => (
-          <li className="listItem" key={user.id}>
-            {user.heading}
-          </li>
-        ))}
-      </ul>
+      <Table data={Search(Users)} />
     </div>
   );
 }
