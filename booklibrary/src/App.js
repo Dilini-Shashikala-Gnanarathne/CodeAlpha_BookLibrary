@@ -15,10 +15,10 @@ function App() {
       />
       <ul className="list">
         {Users.filter((asd) =>
-          asd.first_name.toLowerCase().includes(query)
+          asd.heading.toLowerCase().includes(query)
         ).map((user) => (
           <li className="listItem" key={user.id}>
-            {user.first_name}
+            {user.heading}
           </li>
         ))}
       </ul>
