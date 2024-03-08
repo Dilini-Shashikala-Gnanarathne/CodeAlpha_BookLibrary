@@ -1,13 +1,27 @@
-import './App.css';
-import { Users } from './users';
+import {  useState } from "react";
+import { Users } from "./users";
+import "./App.css";
+
+
+
 function App() {
+  const [query, setQuery] = useState("");
   return (
-    <div className="App">
-  <input type="text" placeholder="Search" className="search" />
-  <ul className="list">
-    {Users.map((user)=>(
-    <li className="listItem">{user.first_name}</li>))}
-  </ul>
+    <div className="app">
+      <input
+        className="search"
+        placeholder="Search..."
+        onChange={(e) => setQuery(e.target.value.toLowerCase())}
+      />
+      <ul className="list">
+        {Users.filter((asd) =>
+          asd.first_name.toLowerCase().includes(query)
+        ).map((user) => (
+          <li className="listItem" key={user.id}>
+            {user.first_name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
