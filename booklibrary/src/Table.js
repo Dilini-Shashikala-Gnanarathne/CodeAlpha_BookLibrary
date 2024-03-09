@@ -3,15 +3,15 @@ const Table = ({ data }) => {
     <table>
       <tbody>
         <tr>
-          <th>heading</th>
-          <th>location</th>
-          <th>img</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Email</th>
         </tr>
         {data.map((item) => (
           <tr key={item.id}>
-            <td>{item.heading}</td>
-            <td>{item.location}</td>
-            <td>{item.img}</td>
+            <td>{item.first_name}</td>
+            <td>{item.last_name}</td>
+            <td>{item.email}</td>
           </tr>
         ))}
       </tbody>
